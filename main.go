@@ -231,7 +231,7 @@ func getServiceURL() string {
 
 func main() {
 	// Set up HTTP server for A2A protocol
-	http.HandleFunc("/.well-known/agent-card", handleAgentCard)
+	http.HandleFunc("/.well-known/agent.json", handleAgentCard)
 	http.HandleFunc("/a2a", handleA2ARequest)
 	http.HandleFunc("/health", handleHealth)
 
@@ -241,7 +241,7 @@ func main() {
 	}
 
 	log.Printf("Job Aggregator Agent starting on port %s...", port)
-	log.Printf("Agent Card: http://localhost:%s/.well-known/agent-card", port)
+	log.Printf("Agent Card: http://localhost:%s/.well-known/agent.json", port)
 	log.Printf("Health Check: http://localhost:%s/health", port)
 	log.Fatal(http.ListenAndServe(":"+port, nil))
 }
